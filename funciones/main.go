@@ -6,9 +6,11 @@ import (
 )
 
 func main() {
-	pol := []float64{1.0, 2.0, 3.0, 4.0}
-
+	pol := []float64{3.0, 2.0, 1.0}
+	lista := []int{1, 6, 4, 9, -2, 6}
 	polinomio(pol)
+
+	fmt.Println(enteros(lista))
 }
 
 /*
@@ -49,4 +51,32 @@ func polinomio(coeficiente []float64) {
 
 	fmt.Println("El polinomio completo es: ")
 	fmt.Println(strings.Join(terminos, " ")) //Los muestro en la terminal poniendo un espacio entre elementos.
+}
+
+/*
+Escribir una función que reciba una lista de enteros y devuelva el menor y el mayor de la lista
+*/
+func enteros(lista []int) (int, int) {
+
+	//Inicializo las variables min y max con el primer valor de la lista, ya que éste es el menor  y el mayor al momento de iterarla.
+	min := lista[0]
+	max := lista[0]
+
+	//Recorro el arreglo
+	for i := 1; i < len(lista); i++ {
+		
+		//Si lista en la posición i es menor que el mínimo actual, se actualiza el valor de la variable con el valor actual.
+		if lista[i] < min {
+
+			min = lista[i]
+		}
+
+		//Si lista en la posición i es mayor que el máximo actual, se actualiza el valor de la variable con el valor actual.
+		if lista[i] > max {
+
+			max = lista[i]
+		}
+	}
+
+	return min, max
 }
