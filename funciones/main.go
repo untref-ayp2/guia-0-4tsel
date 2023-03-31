@@ -6,13 +6,13 @@ import (
 )
 
 func main() {
-	pol := []float64{3.0, 2.0, 1.0}
+	// pol := []float64{3.0, 2.0, 1.0}
 	lista := []int{1, 6, 4, 9, -2, 6}
-	polinomio(pol)
+	// polinomio(pol)
 
 	fmt.Println(enteros(lista))
 
-	Menu()
+	// Menu()
 }
 
 /*
@@ -25,8 +25,24 @@ func polinomio(coeficiente []float64) {
 	//Declaro un arreglo del tipo string para guardar el polinomio
 	terminos := []string{}
 
+	for i, v := range coeficiente {
+
+		coef := fmt.Sprintf("%.2f", v)
+
+		if i == 1 {
+
+			coef = "+ " + coef + " X"
+
+		} else if i > 1 {
+
+			coef = fmt.Sprintf("+ "+coef+" X**%v", i)
+		}
+
+		terminos = append(terminos, coef)
+	}
+
 	//Recorro el arreglo desde el primer elemento hasta el último
-	for i := 0; i < len(coeficiente); i++ {
+	/* for i := 0; i < len(coeficiente); i++ {
 
 		//Cambio el tipo de dato de float a string, formateando el float con 2 decimales ("%.2f")
 
@@ -48,7 +64,7 @@ func polinomio(coeficiente []float64) {
 			terminos = append(terminos, coef)
 		}
 
-	}
+	} */
 
 	fmt.Println("El polinomio completo es: ")
 	fmt.Println(strings.Join(terminos, " ")) //Los muestro en la terminal poniendo un espacio entre elementos.
@@ -56,29 +72,29 @@ func polinomio(coeficiente []float64) {
 
 /*
 Formar un menú con 4 opciones (como se muestra debajo) y al elegir una de ellas mostrar un cartel
-diciendo qué opción se eligió o si fue una opción incorrecta. 
+diciendo qué opción se eligió o si fue una opción incorrecta.
 - Opción 1
 - Opción 2
 - Opción 3
 - Opción 4
 */
 
-func Menu(){
+func Menu() {
 
 	//Inicializo la variable opcion del tipo int
 	var opcion int
 
 	mostrar_menu()
-	fmt.Scanln(&opcion)//Tomo lo que ingresa por terminal, guardándolo en la variable opcion
+	fmt.Scanln(&opcion) //Tomo lo que ingresa por terminal, guardándolo en la variable opcion
 	eleccion_menu(opcion)
 }
 
-func mostrar_menu(){
+func mostrar_menu() {
 
-	fmt.Println("Menú. Elija una opción. \n 1- Opción 1. \n 2- Opción 2. \n 3- Opción 3. \n 4- Opción 4." )
+	fmt.Println("Menú. Elija una opción. \n 1- Opción 1. \n 2- Opción 2. \n 3- Opción 3. \n 4- Opción 4.")
 }
 
-func eleccion_menu(opcion int){
+func eleccion_menu(opcion int) {
 
 	if opcion > 0 && opcion < 5 { //Si opción está entre 1 y 4
 
@@ -98,9 +114,22 @@ func enteros(lista []int) (int, int) {
 	min := lista[0]
 	max := lista[0]
 
+	for _, v := range lista {
+
+		if v < min {
+
+			min = v
+		}
+
+		if v > max {
+
+			max = v
+		}
+	}
+
 	//Recorro el arreglo
-	for i := 1; i < len(lista); i++ {
-		
+	/* for i := 1; i < len(lista); i++ {
+
 		//Si lista en la posición i es menor que el mínimo actual, se actualiza el valor de la variable con el valor actual.
 		if lista[i] < min {
 
@@ -112,7 +141,7 @@ func enteros(lista []int) (int, int) {
 
 			max = lista[i]
 		}
-	}
+	} */
 
 	return min, max
 }
