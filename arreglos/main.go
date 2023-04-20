@@ -27,11 +27,6 @@ func suma(arreglo []int) int {
 		resultado += v
 	}
 
-	/* for i := 0; i < len(arreglo); i++ {
-
-		resultado += arreglo[i]
-	} */
-
 	return resultado
 }
 
@@ -74,26 +69,6 @@ func interseccion(a, b []int) []int {
 		}
 	}
 
-	/* for i := 0; i < len(a); i++ {
-
-		aux := 0
-		encontrado := false
-
-		for !encontrado && aux < len(b) {
-
-			if a[i] == b[aux] {
-
-				encontrado = true
-			}
-			aux++
-		}
-
-		if encontrado {
-
-			intersec = append(intersec, a[i])
-		}
-	} */
-
 	intersec = eliminar_repetidos(intersec)
 
 	return intersec
@@ -124,23 +99,6 @@ func eliminar_repetidos(a []int) []int {
 			filtrado = append(filtrado, v)
 		}
 	}
-
-	/* for i := 1; i < len(a); i++ {
-
-		encontrado := false
-		aux := 0
-		for !encontrado && aux < len(filtrado) {
-
-			if filtrado[aux] == a[i] {
-
-				encontrado = true
-			}
-			aux++
-		}
-		if !encontrado {
-			filtrado = append(filtrado, a[i])
-		}
-	} */
 
 	return filtrado
 }
